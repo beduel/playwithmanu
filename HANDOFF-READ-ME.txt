@@ -1,0 +1,25 @@
+PLAYWITHMANU — HANDOFF PACKAGE
+Date: 2026-10-07
+
+This package is based on playwithmanu-v2.5.7-FINAL and is intended to be uploaded into a new ChatGPT conversation so work can continue without rebuilding the site.
+
+IMAGE STATE / IMPORTANT:
+- Exandria: keep the current updated card in this package.
+- World of Warcraft 5E: REPLACED with the newest Alliance-vs-Horde image: human on left, orc on right, both looking toward camera, no hand/paw toward lens.
+- Elder Scrolls 5E: KEEP THE OLD APPROVED WEREWOLF card from the existing site package. Do NOT use the later accidental Warcraft/wolf generations.
+- Game of Thrones: keep the current updated red-haired Northern/Stark-themed card already in this package.
+- JoJo's Bizarre Adventure 5E: keep the current updated JoJo card already in this package.
+- Invincible 5E: KEEP THE OLD SITE IMAGE. Do NOT replace it with the later newly generated Invincible experiments.
+- Pokemon: keep the old site image for now.
+- Avatar: REPLACED with the newest realistic Chinese waterbender image, close readable face, dynamic water, no oversized hand against lens.
+- Symbaroum: keep the current approved card.
+- Hunter x Hunter: not in homepage 3x3; keep its landing page and All Campaigns entry.
+
+SITE RULES:
+- Do not rebuild from scratch.
+- Preserve current desktop hero layout, mobile behavior, multilingual EN/DE/IT/FR/ES, SEO, hreflang, sitemap, GA4 consent/privacy, campaign pages and StartPlaying links.
+- Campaign images contain NO lettering; campaign titles are HTML.
+- Cards should have distinct compositions; avoid repeating hands toward camera.
+- Main grid: Exandria, Warcraft, Elder Scrolls, Game of Thrones, JoJo, Invincible, Pokemon, Avatar, Symbaroum.
+
+If an image needs further visual changes, edit only that asset unless explicitly asked to change layout/code.

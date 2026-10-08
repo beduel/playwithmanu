@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Privacy | Play With Manu</title>
+<meta content="Privacy information for playwithmanu.com." name="description"/>
+<link href="https://playwithmanu.com/privacy.html" rel="canonical"/>
+<style>
+body{margin:0;background:#0d0c0b;color:#e9e4da;font:16px/1.7 Georgia,serif}main{max-width:820px;margin:0 auto;padding:64px 24px}
+a{color:#d8b66a}h1,h2{color:#f3e8cc}.box{border:1px solid #4b402c;padding:22px;background:#14120f}
+</style>
+<style id="privacy-consent-style">
+.cookie-consent{position:fixed;left:18px;right:18px;bottom:18px;z-index:9999;max-width:760px;margin:auto;background:#11100e;border:1px solid rgba(210,173,93,.45);box-shadow:0 16px 50px rgba(0,0,0,.55);padding:18px 20px;color:#eee;font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;display:none}
+.cookie-consent strong{color:#e2c47f}.cookie-consent p{margin:0 0 12px}.cookie-consent a{color:#e2c47f}
+.cookie-actions{display:flex;gap:10px;flex-wrap:wrap}.cookie-actions button{border:1px solid #b8954d;background:#b8954d;color:#111;padding:9px 14px;cursor:pointer;font-weight:700}
+.cookie-actions button.secondary{background:transparent;color:#eee;border-color:#777}
+.privacy-settings{background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;padding:0;font:inherit}
+</style>
+<script id="analytics-consent">
+(function() {
+  const KEY='manu_analytics_consent';
+  const GA='G-F18NKG4115';
+  function loadGA() {
+    if (window.__manuGaLoaded) return;
+    window.__manuGaLoaded=true;
+    const s=document.createElement('script');
+    s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+GA;
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){dataLayer.push(arguments);};
+    gtag('js',new Date());
+    gtag('config',GA,{anonymize_ip:true});
+  }
+  function banner(show) {
+    const el=document.getElementById('cookie-consent');
+    if(el) el.style.display=show?'block':'none';
+  }
+  function setConsent(value) {
+    localStorage.setItem(KEY,value);
+    banner(false);
+    if(value==='granted') loadGA();
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    const value=localStorage.getItem(KEY);
+    if(value==='granted') loadGA();
+    else if(value!=='denied') banner(true);
+    document.getElementById('cookie-accept')?.addEventListener('click',()=>setConsent('granted'));
+    document.getElementById('cookie-reject')?.addEventListener('click',()=>setConsent('denied'));
+    document.querySelectorAll('[data-privacy-settings]').forEach(el=>el.addEventListener('click',function(e){
+      e.preventDefault(); localStorage.removeItem(KEY); banner(true);
+    }));
+  });
+})();
+</script>
+</head><body><main>
+<p><a href="/">← Back to Play With Manu</a></p>
+<h1>Privacy</h1>
+<div class="box">
+<p><strong>playwithmanu.com</strong> is a promotional website for online tabletop RPG campaigns.</p>
+<h2>Optional analytics</h2>
+<p>Google Analytics is used only after you choose “Accept analytics.” It helps measure visits, page usage, traffic sources, and outbound clicks such as links to StartPlaying, including the campaign page and link text used, so I can understand which campaign pages generate booking interest. If you reject analytics, the Google Analytics script is not loaded by this site.</p>
+<p>Your choice is stored locally in your browser so the site can remember it. You can reopen the choice below at any time.</p>
+<p><button class="privacy-settings" data-privacy-settings="" type="button">Change analytics choice</button></p>
+<h2>External services</h2>
+<p>Links to StartPlaying and other external websites are governed by those services’ own privacy practices once you leave this site.</p>
+<h2>Contact</h2>
+<p>For privacy questions, use the contact options available through the linked StartPlaying profile.</p>
+</div></main>
+<div aria-label="Analytics privacy choices" class="cookie-consent" id="cookie-consent" role="dialog">
+<p><strong>Analytics &amp; privacy</strong><br/>
+  I use optional Google Analytics to understand which pages and campaigns are useful. Analytics loads only if you accept. You can change your choice later. <a href="/privacy.html">Privacy details</a>.</p>
+<div class="cookie-actions">
+<button id="cookie-accept" type="button">Accept analytics</button>
+<button class="secondary" id="cookie-reject" type="button">Reject</button>
+</div>
+</div>
+<script id="conversion-tracking">
+document.addEventListener('click', function(e){
+  const a=e.target.closest('a'); if(!a) return;
+  const href=a.href||'';
+  if(href.includes('startplaying.games') && typeof window.gtag==='function'){
+    const path=location.pathname;
+    let campaign='profile';
+    if(path!=='/' && path!=='/index.html') campaign=path.split('/').pop().replace(/\.html$/,'');
+    gtag('event','startplaying_click',{
+      campaign_name:campaign,
+      link_url:href,
+      link_text:(a.textContent||'').trim().slice(0,100)
+    });
+  }
+});
+</script>
+</body></html>
